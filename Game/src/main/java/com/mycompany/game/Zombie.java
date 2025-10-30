@@ -126,7 +126,7 @@ class NomalZombie extends Zombie{
     public NomalZombie(int hp, int dmg,GamePanel GP) {
         super(hp, dmg, GP);
         setHeight(70);
-        setWidth(70);
+        setWidth(35);
         loadSetup(path);
         this.speed = 1.5;
     }
@@ -136,7 +136,8 @@ class NomalZombie extends Zombie{
         if(img != null){
             g2.drawImage(img, x-20, y, 70, 70, GP);
             g2.setColor(Color.GREEN);
-            //g2.drawRect(x, y, 30, 70);
+            g2.fillRect((x+width/2)-(Hp/10)/2, y-20, Hp/10, 3);
+            //g2.drawRect(x, y, width, height);
         }else{
             g2.setColor(Color.GREEN);
             g2.drawRect(x, y, 30, 70);
@@ -150,7 +151,7 @@ class SpeedZombie extends Zombie {
     public SpeedZombie(int hp, int dmg, GamePanel GP) {
         super(hp, dmg, GP);
         setHeight(70);
-        setWidth(70);
+        setWidth(35);
         loadSetup(path);
         this.speed = 2.5;
     }
@@ -160,6 +161,7 @@ class SpeedZombie extends Zombie {
         if (img != null) {
             g2.drawImage(img, x - 20, y, 70, 70, GP);
             g2.setColor(Color.GREEN);
+            g2.fillRect((x+width/2)-(Hp/10)/2, y-20, Hp/10, 3);
             //g2.drawRect(x, y, 30, 70);
         } else {
             g2.setColor(Color.GREEN);
@@ -184,6 +186,7 @@ class Tank extends Zombie {
         if (img != null) {
             g2.drawImage(img, x, y, 120, 120, GP);
             g2.setColor(Color.GREEN);
+            g2.fillRect((x+width/2)-(Hp/10)/2, y-20, Hp/10, 3); // Ai peemer
             //g2.drawRect(x, y, width, height);
         } else {
             g2.setColor(Color.GREEN);

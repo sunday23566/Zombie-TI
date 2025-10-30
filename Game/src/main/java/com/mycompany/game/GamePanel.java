@@ -425,7 +425,7 @@ public class GamePanel extends JPanel{
                 throw new AssertionError();
         }
         if(toggle != "" && currentState == GameState.PLANNING){
-            if (input.click == true && input.x >300 && input.x<950 && input.y > 340 && input.y < 510) {
+            if (input.click == true && input.x >300 && input.x<950 && input.y > 350 && input.y < 510) {
                 input.click = false;
                 placeItem(input.x-35,input.y-35, 70, toggle);
                 toggle = "";

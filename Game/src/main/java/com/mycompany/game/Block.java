@@ -157,7 +157,7 @@ class Mine extends Block{
     void draw(Graphics2D g2) {
         if (image != null) {
             g2.drawImage(image, x, y, width, width, GP);
-            g2.drawRect(x, y, width, width);
+            //g2.drawRect(x, y, width, width);
         } else {
             g2.drawRect(x, y, width, width);
         }
@@ -227,9 +227,9 @@ class Trap extends Block {
     void draw(Graphics2D g2) {
         if (image!=null) {
             g2.drawImage(image, x, y, width, width, GP);
-            g2.drawRect(x, y, width, width);
+            //g2.drawRect(x, y, width, width);
         }else{
-            g2.drawRect(x, y, width, 1024);
+            g2.drawRect(x, y, width, width);
         }
     }
     
