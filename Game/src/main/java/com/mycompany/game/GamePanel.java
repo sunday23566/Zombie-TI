@@ -76,8 +76,6 @@ public class GamePanel extends JPanel{
         GAMEOVER
     }
     
-    JButton btn = new JButton("Next");
-    
     public GameState currentState = GameState.UPGRADE;
     
     int baseHp = 150;
@@ -122,7 +120,7 @@ public class GamePanel extends JPanel{
 
     public GamePanel() {
         zombies = new CopyOnWriteArrayList<>();
-        Blocks = new CopyOnWriteArrayList<>();
+        Blocks = new CopyOnWriteArrayList<>(); 
         bullets = new CopyOnWriteArrayList<>();
         
         
@@ -253,33 +251,26 @@ public class GamePanel extends JPanel{
             checkClick();
         }
         //new Day
-        
         switch (currentState) {
             case FIGHTING:
-                
                 player.update();
                 for (Zombie zom : zombies) {
                     zom.update();
                 }
-                
                 long now = System.currentTimeMillis();
                 if (now - lastSpawnTime >= spawnRate) {
                     spawnZombie();
                     lastSpawnTime = now;
                 }
-                
                 if (day % 5 == 0) {
                     if (spawnRate > 1500) {
                         spawnRate -= 250;
                     }
-                    baseHp += 25;
                     player.speed = 1;
-                    actionPoint += 3;
                     try {
                         backgroundImage = ImageIO.read(imageUrlBG);
                     } catch (Exception e) {
                     }
-
                 } else {
                     player.speed = 2;
                     try {
@@ -287,7 +278,6 @@ public class GamePanel extends JPanel{
                     } catch (Exception e) {
                     }
                 }
-                
                 if (ZombieAmout >= MaxZombie && zombies.isEmpty()) {
                     ZombieAmout = 0;
                     findresourcePoint = 0;
@@ -300,7 +290,6 @@ public class GamePanel extends JPanel{
 
                     currentState = GameState.UPGRADE;
                 }
-                
                 break;
             case UPGRADE:
                 try {
@@ -314,7 +303,6 @@ public class GamePanel extends JPanel{
                         backgroundImage = ImageIO.read(imageUrlBGDay);
                     } catch (Exception e) {
                     }
-                
                 break;
             case GAMEOVER:
                 break;
@@ -420,6 +408,7 @@ public class GamePanel extends JPanel{
                 
                 g2.setFont(newFont2);
                 g2.drawString("GAME OVER!", getWidth()/3, getHeight()/2);
+                g2.drawString("IN Day:" + day, getWidth()/3, getHeight()-100);
                 break;
             default:
                 throw new AssertionError();
